@@ -119,3 +119,43 @@ For example, the most common:
 - `O(1)` - an algorithm runs in constant time (The fastest);
 - `O(n)` - linear algorithm. Complexity scales linearly (the number of operations increases linearly, the number of elements); 
 - `O(log n)` - the simplest example is binary search.
+
+**Equals and Hashcode methods**  
+
+Some collections use hashing when searching and comparing. 
+In Java, hashing is a transformation using the hashcode method of any object to an integer.
+
+In HashMap, comparison is performed first by hashcode and then by equals.
+These methods must be properly overridden. 
+When different objects return the same hash code, this is called a collision.
+
+- The result of executing the hashcode method for the same object must be the same.
+- If, according to the equals method, two objects are equal, then the hashcode of these objects must be the same.
+- If, according to the equals method, two objects are not equal, then the hash code of these objects does not have to be different.
+
+**Map**  
+
+![map-01](https://raw.githubusercontent.com/AdilhanKaikenov/java-black-belt/master/src/main/java/com/epam/adilkhan/collection/etc/map-01.jpg)
+
+**HashMap** elements are key / value pairs (just like all Map). HashMap does not remember the order in 
+which elements are added. His methods are very fast.
+
+- Item keys must be unique. If we put a value with a key that already exists, 
+then the value of the existing key is overwritten.
+- The key can be null. 
+- Element values can be repeated. 
+- Values can be null.
+
+![map-02](https://raw.githubusercontent.com/AdilhanKaikenov/java-black-belt/master/src/main/java/com/epam/adilkhan/collection/etc/map-02.jpg)
+
+HashMap is based on an array. The elements of this array are LinkedList structures. 
+The LinkedList structure data is filled with elements that we add to the HashMap. Also, the elements of an array in a 
+HashMap are called baskets. Baskets contain HashMap elements.
+
+![map-03](https://raw.githubusercontent.com/AdilhanKaikenov/java-black-belt/master/src/main/java/com/epam/adilkhan/collection/etc/map-03.jpg)
+
+When creating a HashMap, two parameters can be specified that affect performance:
+- Initial capacity - Initial size of the array (DEFAULT_INITIAL_CAPACITY = 16); 
+- Load factor - The coefficient of how much the array should be filled, after which 
+its size should be doubled 
+(16 * 0,75 = 12 -> after the 12th element, the capacity will be doubled and all elements will be rehashed).
