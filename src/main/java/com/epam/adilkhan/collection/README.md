@@ -159,3 +159,113 @@ When creating a HashMap, two parameters can be specified that affect performance
 - Load factor - The coefficient of how much the array should be filled, after which 
 its size should be doubled 
 (16 * 0,75 = 12 -> after the 12th element, the capacity will be doubled and all elements will be rehashed).
+
+**TreeMap**  
+
+The elements of a TreeMap are a key / value pair. In TreeMap, items are stored in ascending sorted order.
+Sorted by key.
+
+TreeMap is based on a red-black tree. This allows methods to run faster, but not faster than HashMap.
+
+We cannot use null in TreeMap as a key and we cannot use classes that do not implement the Comparable 
+interface as a key in TreeMap. Alternatively a comparator can be passed to the constructor when creating 
+the TreeMap.
+
+```java
+TreeMap<Student, Double> treeMap = new TreeMap<>(new Comparator<Student>() {
+    @Override
+    public int compare(Student o1, Student o2) {
+        return 0;
+    }
+});
+```
+When working with TreeMap, there is no need to override equals and hashcode for the key object.
+Because search, add and delete (except contains) by key are done using the compareTo method.
+
+Thanks to the red-black tree, the work of methods such as containsKey, remove, get, 
+put is processed in O (log n).
+
+![map-04](https://raw.githubusercontent.com/AdilhanKaikenov/java-black-belt/master/src/main/java/com/epam/adilkhan/collection/etc/map-04.jpg)
+
+**LinkedHashMap**
+
+LinkedHashMap inherits from HashMap. Stores information about the order in which elements are 
+added or the order in which they are used. Method performance is slightly lower than that of HashMap.
+
+```java
+LinkedHashMap<Double, Student> linkedHashMap = new LinkedHashMap<>(16, 0.75f, true);
+```
+
+**Set**
+
+Set is a collection that stores unique elements. The methods in this collection are very fast.
+
+![set-01](https://raw.githubusercontent.com/AdilhanKaikenov/java-black-belt/master/src/main/java/com/epam/adilkhan/collection/etc/set-01.jpg)
+
+Any Set is based on a stripped-down version of Map. At the heart of a HashSet is a HashMap object. 
+For the elements of this HashMap: keys are elements of the HashSet, and values are a stub constant. 
+Set has no get method.
+
+```java
+public class HashSet<E> extends AbstractSet<E> implements Set<E>, Cloneable, java.io.Serializable {
+    ...
+    private transient HashMap<E,Object> map;    
+
+    // Dummy value to associate with an Object in the backing Map
+     private static final Object PRESENT = new Object();
+
+    /**
+     * Constructs a new, empty set; the backing <tt>HashMap</tt> instance has
+     * default initial capacity (16) and load factor (0.75).
+     */
+    public HashSet() {
+        map = new HashMap<>();
+    }
+
+    public boolean add(E e) {
+        return map.put(e, PRESENT) == null;
+    }
+    ...
+}
+```
+
+Set operations:  
+- `addAll` - union (объединение)
+- `retainAll` - intersect (пересечение)
+- `removeAll` - subtract (разность)
+
+**TreeSet**  
+
+TreeSet stores items in sorted order. TreeSet is based on TreeMap. For the elements of this TreeMap: 
+keys are elements of the TreeSet, and values are a stub constant.
+
+![set-02](https://raw.githubusercontent.com/AdilhanKaikenov/java-black-belt/master/src/main/java/com/epam/adilkhan/collection/etc/set-02.jpg)
+
+**LinkedHashSet**
+
+LinkedHashSet inherits from HashSet. Stores information about the order in which elements are 
+added. Method performance is slightly lower than that of HashMap.
+
+At the heart of a LinkedHashSet is a HashMap object. For the elements of this HashMap: keys are elements 
+of the LinkedHashSet, and values are a stub constant.
+
+**Queue**  
+
+Queue is a collection that stores a sequence of items. An element is added to the end of the queue, used 
+from the head of the queue - FIFO rule.
+
+![queue-01](https://raw.githubusercontent.com/AdilhanKaikenov/java-black-belt/master/src/main/java/com/epam/adilkhan/collection/etc/queue-01.jpg)
+
+![queue-02](https://raw.githubusercontent.com/AdilhanKaikenov/java-black-belt/master/src/main/java/com/epam/adilkhan/collection/etc/queue-02.jpg)
+
+**PriorityQueue**
+
+PriorityQueue is a special kind of queue that uses a natural sort or one that we describe with a Comparable or Comparator.
+Thus, the element from the queue is used, the priority of which is higher.
+
+**Deque** 
+
+Deque - double ended queue (bidirectional queue). In such a queue, items can be used at both ends. 
+Both rules work here - FIFO and LIFO.
+
+![deque-01](https://raw.githubusercontent.com/AdilhanKaikenov/java-black-belt/master/src/main/java/com/epam/adilkhan/collection/etc/deque-01.jpg)
