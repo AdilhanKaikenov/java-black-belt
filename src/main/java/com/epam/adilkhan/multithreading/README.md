@@ -49,14 +49,14 @@ thread.join();
 // TERMINATED - Once the task is completed, this thread enters the Terminated state
 ```
 
-**Concurrency vs Parallelism**
+**Concurrency vs Parallelism**  
 Concurrency means performing multiple tasks at once. Depending on the processor of the computer, 
 concurrency can be achieved in different ways.
 
 Parallelism means executing 2 or more tasks at the same time, that is, in parallel. 
 In computers with a multi-core processor, concurrency can be achieved through parallelism.
 
-**Asynchronous vs Synchronous**
+**Asynchronous vs Synchronous**  
 In synchronous programming, tasks are performed
 sequentially one after another.
 
