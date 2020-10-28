@@ -99,3 +99,56 @@ Example of synchronized method:
 ```java
 public synchronized void abc() { method body };
 ```
+
+**Monitor concept**  
+A monitor is an entity / mechanism that achieves correct operation during synchronization. 
+In Java, every class and object has a monitor attached to it.
+
+The monitor can have a status of free or busy. This is the mechanism used in Java when the synchronized keyword is used.
+Thus, when one thread enters the area of code marked with the synchronized keyword, the object or class monitor takes on 
+a busy state. At the same time, the monitor can only deal with one thread and no other thread can work with the code 
+until the monitor becomes free again. The rest of the threads will wait until the monitor is free and then these threads 
+will fight to occupy the monitor first.
+
+This examples uses a monitor on the this object:
+```java
+public synchronized void abc() { method body };
+```
+
+```java
+public void abc() {
+    // not synchronized code...
+    synchronized(this) {
+        // synchronized code...
+    }
+};
+```
+
+In these examples, the object monitor this cannot be used, since the method is static, therefore the class monitor is used:
+```java
+public static synchronized void abc() { method body };
+```
+
+```java
+public class MyClass {
+    public static void abc() {
+        // not synchronized code...
+        synchronized(MyClass.class) {
+            // synchronized code...
+        }
+    };
+}
+```
+
+Block example:
+```java
+static final Object lock = new Object();
+
+public void abc() { 
+    // method body
+    synchronized(lock) { 
+        // block body 
+    } 
+    // method body 
+}
+```
