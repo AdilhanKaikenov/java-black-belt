@@ -89,3 +89,13 @@ they have their own cache and where they copy the value of variables.
 
 ![multithreading-01](https://raw.githubusercontent.com/AdilhanKaikenov/java-black-belt/master/src/main/java/com/epam/adilkhan/multithreading/etc/multithreading-01.jpg)
 
+**Data race and synchronized method**  
+
+Data race is a problem that can arise when two or more threads access the same variable and at least 1 thread changes it.
+
+![multithreading-02](https://raw.githubusercontent.com/AdilhanKaikenov/java-black-belt/master/src/main/java/com/epam/adilkhan/multithreading/etc/multithreading-02.jpg)
+
+Example of synchronized method:
+```java
+public synchronized void abc() { method body };
+```
