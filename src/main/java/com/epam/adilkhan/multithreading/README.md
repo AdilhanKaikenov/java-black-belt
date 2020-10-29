@@ -152,3 +152,23 @@ public void abc() {
     // method body 
 }
 ```
+
+**The wait and notify methods**  
+The following methods are often used to notify other threads about its actions:
+- `wait` - releases the monitor and puts the calling thread in a wait state until another thread calls the notify() method;
+- `notify` –Do NOT release the monitor and wake up the thread on which the wait() method was previously called;
+- `notifyAll` – DOES NOT release the monitor and wakes up all threads on which the wait() method was previously called;
+
+When we call `wait()` – this forces the current thread to wait until some other thread invokes `notify()` or `notifyAll()` **on the same object**.
+With `wait(long timeout)` method, we can specify a timeout after which thread will be woken up automatically. 
+A thread can be woken up before reaching the timeout using `notify()` or `notifyAll()`. 
+
+The `notify()` method is used for waking up threads that are waiting for an access to this object's monitor.
+
+**DeadLock, LiveLock and Lock starvation**  
+Deadlock - a situation when 2 or more threads are locked forever, waiting for each other and doing nothing.
+To avoid this problem, you need to synchronize in the same order for different methods.
+
+Livelock - a situation when 2 or more threads are locked forever, waiting for each other, doing some work, but without any progress.
+
+Lock starvation is a situation when lower priority threads wait a long time or all the time in order to start.
