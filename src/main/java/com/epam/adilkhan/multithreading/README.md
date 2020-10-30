@@ -172,3 +172,35 @@ To avoid this problem, you need to synchronize in the same order for different m
 Livelock - a situation when 2 or more threads are locked forever, waiting for each other, doing some work, but without any progress.
 
 Lock starvation is a situation when lower priority threads wait a long time or all the time in order to start.
+
+**Lock and ReentrantLock**  
+Lock is an interface that is implemented by the ReentrantLock class.
+Just like the `synchronized` keyword, Lock is needed to achieve synchronization between threads.
+
+Methods: lock(), unlock(), tryLock().
+
+ReentrantLock
+- Acquire Lock - Reentrant lock class provides lock() methods to get a lock  on the shared resource by thread 
+- Release Lock - To release lock , programmers have to call unlock() method
+- Ability to interrupt - lockInterruptibly() method can be used to interrupt the thread  
+- Fairness - Constructor of this class has fairness parameter. If it is set to true then locks favor granting access to the longest-waiting thread
+- Lock Release Order - Lock can be released in any order 
+
+Synchronized
+- Acquire Lock - You need to just write synchronized keyword to acquire a lock  
+- Release Lock - It is done implicitly 
+- Ability to interrupt - There is no way to interrupt the thread
+- Fairness - Lock does not guarantee any particular  access orde
+- Lock Release Order - Lock should be released in the same order in which they were acquired 
+
+**Daemon Thread**  
+Daemon threads are designed to perform background tasks and provide various services to User threads.  
+When the last User thread is finished, the program ends its execution without waiting for the Daemon threads to finish.
+If there are no user threads, then it is unnecessary to provide any services to them, and therefore we can stop our 
+program without waiting for the end of the daemon thread.
+
+**Interrupt threads**  
+We have the ability to send a signal to the thread that we want to interrupt it.
+We also have the ability to check in the thread itself if they want to interrupt it. 
+It is up to the programmer to decide what to do if this check showed that they want to 
+interrupt the thread.
