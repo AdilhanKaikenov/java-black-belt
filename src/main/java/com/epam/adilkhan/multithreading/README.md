@@ -204,3 +204,58 @@ We have the ability to send a signal to the thread that we want to interrupt it.
 We also have the ability to check in the thread itself if they want to interrupt it. 
 It is up to the programmer to decide what to do if this check showed that they want to 
 interrupt the thread.
+
+**ThreadPool and ExecutorService**  
+In practice, it is often necessary to create not one or two, but many threads. Creating a new thread is 
+quite costly and can take a lot of time. When creating a thread, many processes take place behind 
+the scenes in the Java virtual machine and operating system. In addition, it is inconvenient to 
+manage separately created threads, the mechanism of thread pulls also more efficient in terms of the various processes 
+that take place behind the scenes when we work with many threads.
+
+Thread pool is a set of threads, each of which is designed to perform a particular task.
+
+In Java, the most convenient way to work with thread pools is through the ExecutorService.
+The most convenient way to create a thread pool is to use the factory methods of the Executors class:
+```java
+Executors.newFixedThreadPool(intcount) // will create a pool with 5 threads;
+Executors.newSingleThreadExecutor() // will create a pool with 1 thread;
+```
+
+![multithreading-03](https://raw.githubusercontent.com/AdilhanKaikenov/java-black-belt/master/src/main/java/com/epam/adilkhan/multithreading/etc/multithreading-03.jpg)
+
+The thread works by performing tasks, after the task is completed, it is released and if there are pending tasks, 
+it takes one task and starts executing it.
+
+The `execute()` method passes our task to the thread pool, where it is executed by one of the threads.  
+After executing the `shutdownExecutorService()` method, it realizes that there will be no more new tasks and, 
+having completed the tasks that came before this, terminates.  
+The `awaitTermination()` method forces the thread in which it is called to wait until one of two events is completed: 
+either the ExecutorService terminates its work, or the time specified in the parameter of the `awaitTermination()` method has passed.
+
+**ScheduledExecutorService**  
+When we need to start a thread or several threads of their thread pool according to some schedule, 
+then we need to use the ScheduledExecutorService.  
+We use the ScheduledExecutorService when we want to set a schedule for starting threads from the pool.  
+
+This pool is created using the factory method of the Executors class:
+```java
+Executors.newScheduledThreadPool(int count);
+```
+
+**Callable and Future**  
+Callable, like Runnable, is a specific task that is executed by a thread.
+Unlike Runnable Callable:
+* Has a return type not void;
+* May throw Exception;
+* We can use Runnable with ExecutorService and when creating a new thread, while Callable we can use only with ExecutorService.
+
+The submit method passes our task to the thread pool, for execution by one of the threads, and returns the Future type, 
+which stores the result of our task execution.  
+The get method allows you to get the result of the execution of our task from the Future object.  
+
+When we submit and receive the Future object, the result of completing the task in the Future is not yet available. 
+The result will be in the future when the task is fully completed. When we try to pull out the result of the task 
+execution from the Future object, and this task has not finished its execution yet, then the thread in which the 
+get method was called will be blocked until the task completes.
+
+
