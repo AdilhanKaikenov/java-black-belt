@@ -258,4 +258,12 @@ The result will be in the future when the task is fully completed. When we try t
 execution from the Future object, and this task has not finished its execution yet, then the thread in which the 
 get method was called will be blocked until the task completes.
 
+**Semaphore**  
+Semaphore is a synchronizer that allows you to restrict access to a certain resource. The Semaphore constructor needs 
+to pass the number of threads that Semaphore will allow to use this resource at the same time.
 
+![multithreading-04](https://raw.githubusercontent.com/AdilhanKaikenov/java-black-belt/master/src/main/java/com/epam/adilkhan/multithreading/etc/multithreading-04.jpg)
+
+**CountDownLatch**  
+CountDownLatch is a synchronizer that allows any number of threads to wait until a certain number of operations have completed. 
+The CountDownLatch constructor must be passed the number of operations that must complete in order for the threads to continue their work.
