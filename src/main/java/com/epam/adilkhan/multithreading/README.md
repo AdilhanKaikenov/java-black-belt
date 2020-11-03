@@ -273,3 +273,31 @@ The CountDownLatch constructor must be passed the number of operations that must
 **Exchanger**  
 Exchanger is a synchronizer that allows data exchange between two threads, ensuring that both threads receive information from each other at the same time.  
 
+**Collections for working with multithreading**  
+* Synchronized collections - obtained from traditional collections by wrapping them.  
+```java
+Collections.synchronizedXYZ(collection);
+```
+Synchronized collections achieve thread safety by using a lock for all methods through 
+synchronized blocks. This means that for example, if several threads want to add an 
+element to the ArrayList, some threads want to remove from this list, then only one 
+thread will have access to the ArrayList.
+
+* Concurrent collections - originally designed to work with multithreading.  
+Concurrent collections tend to perform better than synchronized collections because 
+they were built specifically to work with threads.
+
+ConcurrentHashMap  
+* ConcurrentHashMap implements the ConcurrentMap interface, which in turn implements the Map interface.
+* In ConcurrentHashMap, any number of threads can read elements without blocking it.
+* In ConcurrentHashMap, due to its segmentation, when any element changes, only the bucket in which it is located is blocked.
+* In ConcurrentHashMap, neither key nor value can be null.
+
+CopyOnWriteArrayList  
+* CopyOnWriteArrayList implements the List interface.
+* CopyOnWriteArrayList should be used when you need to achieve thread safety, you have a small number of operations for changing elements and a large number of reading them.
+* In CopyOnWriteArrayList, a copy of this list is created for each element change operation.
+
+ArrayBlockingQueue  
+* ArrayBlockingQueue - thread-safe queue with limited size (capacity restricted).
+* Typically, one or more threads add items to the end of the queue, and another or other threads take items from the front of the queue.
