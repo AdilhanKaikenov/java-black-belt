@@ -288,16 +288,16 @@ Concurrent collections tend to perform better than synchronized collections beca
 they were built specifically to work with threads.
 
 ConcurrentHashMap  
-* ConcurrentHashMap implements the ConcurrentMap interface, which in turn implements the Map interface.
-* In ConcurrentHashMap, any number of threads can read elements without blocking it.
-* In ConcurrentHashMap, due to its segmentation, when any element changes, only the bucket in which it is located is blocked.
-* In ConcurrentHashMap, neither key nor value can be null.
+1) ConcurrentHashMap implements the ConcurrentMap interface, which in turn implements the Map interface.
+2) In ConcurrentHashMap, any number of threads can read elements without blocking it.
+3) In ConcurrentHashMap, due to its segmentation, when any element changes, only the bucket in which it is located is blocked.
+4) In ConcurrentHashMap, neither key nor value can be null.
 
 CopyOnWriteArrayList  
-* CopyOnWriteArrayList implements the List interface.
-* CopyOnWriteArrayList should be used when you need to achieve thread safety, you have a small number of operations for changing elements and a large number of reading them.
-* In CopyOnWriteArrayList, a copy of this list is created for each element change operation.
+1) CopyOnWriteArrayList implements the List interface.
+2) CopyOnWriteArrayList should be used when you need to achieve thread safety, you have a small number of operations for changing elements and a large number of reading them.
+3) In CopyOnWriteArrayList, a copy of this list is created for each element change operation.
 
 ArrayBlockingQueue  
-* ArrayBlockingQueue - thread-safe queue with limited size (capacity restricted).
-* Typically, one or more threads add items to the end of the queue, and another or other threads take items from the front of the queue.
+1) ArrayBlockingQueue - thread-safe queue with limited size (capacity restricted).
+2) Typically, one or more threads add items to the end of the queue, and another or other threads take items from the front of the queue.
