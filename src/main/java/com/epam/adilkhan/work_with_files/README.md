@@ -1,3 +1,5 @@
+**IO**  
+
 **Character Streams and Byte Streams**  
 Stream for working with files is an ordered sequence of data.
 
@@ -91,3 +93,17 @@ File file = new File (“test1.txt”);
 
 Mathods: getAbsolutePath, isAbsolute, isDirectory, exists, createNewFile, 
 mkdir, length, delete, listFiles, isHidden, canRead, canWrite, canExecute
+
+**NIO**  
+
+**Buffers and Channels**  
+
+Buffer - This is a block of memory in which we can write information, as well as read it.  
+Unlike streams, a Channel can both read a file and write to it.  
+
+![nio-01](https://raw.githubusercontent.com/AdilhanKaikenov/java-black-belt/master/src/main/java/com/epam/adilkhan/work_with_files/etc/nio-01.jpg)
+
+Reading a file: Channel reads information from a file and writes to Buffer.  
+Write to file: Channel reads information from Buffer and writes it to file.  
+
+
