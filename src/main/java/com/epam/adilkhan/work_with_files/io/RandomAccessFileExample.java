@@ -1,4 +1,4 @@
-package com.epam.adilkhan.work_with_files;
+package com.epam.adilkhan.work_with_files.io;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

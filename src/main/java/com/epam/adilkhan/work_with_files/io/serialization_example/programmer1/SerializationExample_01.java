@@ -1,4 +1,4 @@
-package com.epam.adilkhan.work_with_files.serialization_example.programmer1;
+package com.epam.adilkhan.work_with_files.io.serialization_example.programmer1;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
