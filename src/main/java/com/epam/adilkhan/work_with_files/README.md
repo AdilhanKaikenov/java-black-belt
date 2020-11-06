@@ -97,7 +97,6 @@ mkdir, length, delete, listFiles, isHidden, canRead, canWrite, canExecute
 **NIO**  
 
 **Buffers and Channels**  
-
 Buffer - This is a block of memory in which we can write information, as well as read it.  
 Unlike streams, a Channel can both read a file and write to it.  
 
@@ -106,4 +105,50 @@ Unlike streams, a Channel can both read a file and write to it.
 Reading a file: Channel reads information from a file and writes to Buffer.  
 Write to file: Channel reads information from Buffer and writes it to file.  
 
+**Interface Path & class Files**  
+An object of type Path represents the path to a file or directory.
 
+```java
+Path path= Paths.get(“text1.txt”);
+```
+
+Path Methods: 
+```java
+path.getFileName();
+path.getParent();
+path.getRoot();
+path.is Absolute();
+path.toAbsolutePath();
+path1.resolve(path2); 
+path1.relativize(path2);
+```
+
+Files Methods: 
+```java
+Files.exists(path);
+Files.createFile(path);
+Files.createDirectory(path);
+
+Files.isReadable();
+Files.isWritable();
+Files.isExecutable();
+
+Files.isSameFile(path1, path2);
+Files.size();
+Files.getAttribute(path, attribute_name);
+Files.readAttributes(path, attributes);
+```
+
+More Files Methods:
+```java
+Files.copy(path1, path2, copy_options);
+Files.copy(txtFilePath, directoryPath.resolve(txtFilePath), StandardCopyOption.REPLACE_EXISTING);
+
+Files.move(path1, path2, copy_options);
+/// We can rename file
+Files.move(Path.get("text_file_1.txt"), Path.get("renamed_text_file_2.txt"))
+
+Files.delete(path);
+Files.write(path, byte_array);
+Files.readAllLines(path);
+```
