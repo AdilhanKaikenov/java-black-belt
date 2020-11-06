@@ -152,3 +152,18 @@ Files.delete(path);
 Files.write(path, byte_array);
 Files.readAllLines(path);
 ```
+
+**Files.walkFileTree**  
+The Files.walkFileTree (Path start, FileVisitor visitor) method is used to traverse the file tree.  
+The logic for traversing the file tree is in a class that implements the FileVisitor interface.  
+- preVisitDirectory - fires before accessing folder items;
+- visitFile - fires when accessing a file;
+- postVisitDirectory - fires after accessing all items in the folder;
+- visitFileFailed - fires when a file is unavailable for some reason.
+
+**enum FileVisitResult**  
+FileVisitResult values:  
+- CONTINUE means that you need to continue crawling through files;
+- TERMINATE means that you need to immediately stop crawling through files;
+- SKIP_SUBTREE - means that you do not need to enter this directory;
+- SKIP_SIBLINGS - means that you do not need to continue crawling through files in this directory.
